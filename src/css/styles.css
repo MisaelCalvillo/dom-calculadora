@@ -6,4 +6,15 @@
   border-radius: 40px;
   background-color: brown;
   margin: 40px auto; 
+  padding: 30px;
+}
+
+.pantalla {
+  width: 100%;
+  height: 70px;
+  margin: 0 auto;
+  border-radius: 20px;
+  background-color: #2f3744;
+  color: white;
+  
 }
