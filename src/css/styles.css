@@ -2,6 +2,7 @@
 
 html {
   font-family: 'Roboto', sans-serif;
+  background-color: #B3E5FC;
 }
 
 .calculadora {
@@ -11,6 +12,7 @@ html {
   margin: 40px auto; 
   padding: 30px;
   border: 3px solid black;
+  box-shadow: 0px 30px 15px -7px rgba(25,23,26,0.3);
 }
 
 .pantalla {
@@ -51,4 +53,15 @@ html {
   color: white;
   font-size: 50px;
   font-weight: bold;
+  transition: all .05s;
+}
+
+.tecla:hover {
+  transform: translateY(-2px);
+  box-shadow: 0px 10px 15px -7px rgba(25,23,26,0.3);
+}
+
+.tecla:active {
+  transform: translateY(-1px);
+  box-shadow: 0 .5rem 1rem rgba(0,0,0,.2);
 }
