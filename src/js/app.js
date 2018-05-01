@@ -5,7 +5,9 @@ const teclado = document.getElementsByClassName("tecla");
 const pantalla = document.querySelector('.pantalla');
 
 // Declara el valor actual de la calculadora
-let resultado = "";
+let resultadoScreen = "";
+let newNumber = "";
+let resultadoHold = [];
 
 
 // Lee cada una de las teclas de la calculadora
@@ -20,22 +22,30 @@ for (let tecla = 0; tecla <= 15; tecla++) {
 function procesa(teclaValue) {
   switch (teclaValue) {
     case "+":
+      agregaPaso(teclaValue);
       agregaSimbolo(teclaValue);
+      borraNewNumber();
       console.log("suma");
       break;
 
     case "-":
-      agregaSimbolo(teclaValue)
+      agregaPaso(teclaValue);
+      agregaSimbolo(teclaValue);
+      borraNewNumber();
       console.log("resta");
       break;
 
     case "/":
-      agregaSimbolo(teclaValue)
+      agregaPaso(teclaValue);
+      agregaSimbolo(teclaValue);
+      borraNewNumber();
       console.log("división");
       break;
 
     case "x":
-      agregaSimbolo(teclaValue)
+      agregaPaso(teclaValue);
+      agregaSimbolo(teclaValue);
+      borraNewNumber();
       console.log("multiplicación");
       break;
 
@@ -45,11 +55,14 @@ function procesa(teclaValue) {
       break;
 
     case "=":
-      console.log("resultado");
+      agregaUltimaCifra();
+      obtenResultado();
+      console.log("resultadoScreen");
       break;
 
     default:
       agregaDigito(teclaValue);
+      agregaDigitoNewNumber(teclaValue);
       console.log("agrega el digito");
 
   }
@@ -57,21 +70,47 @@ function procesa(teclaValue) {
   updateScreen();
 }
 
+function agregaPaso(paso){
+  if(resultadoScreen.length > 0) {
+    resultadoHold.push(newNumber);
+    resultadoHold.push(paso);
+  }
+}
+
 function agregaSimbolo(simbolo){
-  if(resultado.length > 0){
-    resultado += ` ${simbolo} `;
+  if(resultadoScreen.length > 0){
+    resultadoScreen += ` ${simbolo} `;
   }
 }
 
 function borraTodo(){
-  resultado = "";
+  resultadoScreen = "";
+  resultadoHold = [];
+  newNumber = "";
+}
+
+function borraNewNumber(){
+  newNumber = "";
 }
 
 function agregaDigito(stringValue){
-  resultado += stringValue;
+  resultadoScreen += stringValue;
 }
 
-// Actualiza la pantalla con el valor de 'resultado'
-function updateScreen() {
-  pantalla.innerHTML = resultado;
+function agregaUltimaCifra(){
+  resultadoHold.push(newNumber);
 }
+
+function agregaDigitoNewNumber(stringValue){
+  newNumber += stringValue;
+}
+
+function obtenResultado(){
+  console.log(resultadoHold);
+}
+
+// Actualiza la pantalla con el valor de 'resultadoScreen'
+function updateScreen() {
+  pantalla.innerHTML = resultadoScreen;
+}
+
