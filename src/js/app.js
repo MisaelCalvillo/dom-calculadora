@@ -20,18 +20,22 @@ for (let tecla = 0; tecla <= 15; tecla++) {
 function procesa(teclaValue) {
   switch (teclaValue) {
     case "+":
+      agregaSimbolo(teclaValue);
       console.log("suma");
       break;
 
     case "-":
+      agregaSimbolo(teclaValue)
       console.log("resta");
       break;
 
     case "/":
+      agregaSimbolo(teclaValue)
       console.log("división");
       break;
 
     case "x":
+      agregaSimbolo(teclaValue)
       console.log("multiplicación");
       break;
 
@@ -51,6 +55,12 @@ function procesa(teclaValue) {
   }
 
   updateScreen();
+}
+
+function agregaSimbolo(simbolo){
+  if(resultado.length > 0){
+    resultado += ` ${simbolo} `;
+  }
 }
 
 function borraTodo(){
