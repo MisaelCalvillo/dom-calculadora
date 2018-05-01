@@ -5,19 +5,19 @@ const teclado = document.getElementsByClassName("tecla");
 const pantalla = document.querySelector('.pantalla');
 
 // Declara el valor actual de la calculadora
-let resultado = 0;
+let resultado = "";
 
 
 // Lee cada una de las teclas de la calculadora
 for (let tecla = 0; tecla <= 15; tecla++) {
   teclado[tecla].addEventListener('click', function (e) {
     let = teclaValue = e.target.attributes["value"].value;
-    updateScreen(teclaValue);
+    procesa(teclaValue);
   });
 }
 
 // Actualiza la pantalla cada que una tecla es presionada
-function updateScreen(teclaValue) {
+function procesa(teclaValue) {
   switch (teclaValue) {
     case "+":
       console.log("suma");
@@ -44,8 +44,20 @@ function updateScreen(teclaValue) {
       break;
 
     default:
+      agregaDigito(teclaValue);
       console.log("agrega el digito");
 
   }
-  pantalla.innerText = resultado;
+
+  updateScreen();
+}
+
+
+function agregaDigito(stringValue){
+  resultado += stringValue;
+}
+
+// Actualiza la pantalla con el valor de 'resultado'
+function updateScreen() {
+  pantalla.innerHTML = resultado;
 }
