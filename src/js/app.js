@@ -36,6 +36,7 @@ function procesa(teclaValue) {
       break;
 
     case "CE":
+      borraTodo();
       console.log("Borra todo");
       break;
 
@@ -52,6 +53,9 @@ function procesa(teclaValue) {
   updateScreen();
 }
 
+function borraTodo(){
+  resultado = "";
+}
 
 function agregaDigito(stringValue){
   resultado += stringValue;
